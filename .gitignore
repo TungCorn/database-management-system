@@ -1,7 +1,11 @@
+# IntelliJ IDEA
 .idea/
-*.log
-*.tmp
+*.iws
+*.iml
+*.ipr
+out/
+
+# SQL Server Backups
 *.bak
-node_modules/
-target/
-build/
+*.mdf
+*.ldf
