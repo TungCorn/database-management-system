@@ -1,0 +1,1 @@
+declare @x nvarchar(50);
