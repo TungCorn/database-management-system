@@ -85,5 +85,27 @@ WHERE Hang <= 2;
 select *
 from ds_sv_hb_lvk
 
+--
+
+create view v1
+as
+select *
+from SINHVIEN sv
+
+select *
+from v1
+
+drop view if exists v1
+--
+
+insert into v1 (Masv, Hosv, Tensv)
+values ('SV36', N'NGUYEN', N'ANH TUAN')
+
+update v1 set Tensv = 'Ninh beo' where Masv = 'SV006';
+
+update SINHVIEN set Tensv = 'Ninh beo' where Masv = 'SV006';
+
+select * from SINHVIEN
+
 
 
