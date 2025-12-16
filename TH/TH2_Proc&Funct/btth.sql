@@ -70,7 +70,6 @@ end
                 from SP_DonHang spdh
                          join SanPham sp on spdh.IDSanPham = sp.IDSanPham
                 where sp.TenSP = @TenSP
-
                 return @soluong
             end
 
@@ -225,5 +224,35 @@ END
                             END
                         CLOSE @curKH
                         DEALLOCATE @curKH
+
+alter proc sp_spcao1
+@x int,
+@dssp cursor varying out
+    as
+    begin
+        set @dssp = cursor for
+        select spdh.IDSanPham, sp.TenSP
+        from SP_DonHang spdh
+        join SanPham sp on spdh.IDSanPham = sp.IDSanPham
+        group by spdh.IDSanPham, sp.TenSP
+        having sum(spdh.SoLuong) > @x
+        open @dssp
+    end
+
+    declare @dssp cursor
+    exec sp_spcao1 1, @dssp out
+    declare @id int, @tensp nvarchar(100)
+    fetch next from @dssp into @id, @tensp
+    while @@fetch_status = 0
+    begin
+        print cast(@id as nvarchar(5)) + '  ' + @tensp
+        fetch next from @dssp into @id, @tensp
+    end
+
+    close @dssp
+deallocate @dssp
+
+
+
 
 

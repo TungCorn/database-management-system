@@ -1,5 +1,24 @@
 --B1
 
+    declare x cursor dynamic scroll
+    for
+    select d.Masv, sv.Tensv, d.Mamh, max(d.Diem)
+    from DIEMSV d
+    join SINHVIEN sv on d.Masv = sv.Masv
+    group by d.Masv, d.Mamh, sv.Tensv
+    order by d.Masv, d.Mamh
+    open x;
+
+    declare @masv varchar(50), @ten nvarchar(50), @diemcaonhat float, @mamh varchar(10);
+    fetch first from x into @masv, @ten, @mamh, @diemcaonhat
+    while (@@FETCH_STATUS = 0)
+        Begin
+            print @masv + '		' + @ten + '	' + @mamh + '   ' + cast(@diemcaonhat as varchar(10))
+
+            fetch next from x into @masv, @ten, @mamh, @diemcaonhat
+        End
+close x
+    deallocate x
 
 	declare y cursor
 	dynamic scroll
@@ -36,7 +55,6 @@
 		fetch next from y into @masv, @ten, @diemtb
 	End
 
-
 	fetch first from y into @masv, @ten, @diemtb
 	while (@@FETCH_STATUS = 0)
 	Begin
@@ -45,7 +63,6 @@
 	End
 	close y;
 	deallocate y;
-
 
 	--B2
 

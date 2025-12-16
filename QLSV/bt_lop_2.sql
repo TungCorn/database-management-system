@@ -1,6 +1,5 @@
 ﻿--1tr 2tr thi sinh vien ... dat hoc bong
 
-
 	declare y cursor
 	dynamic scroll
 	for 

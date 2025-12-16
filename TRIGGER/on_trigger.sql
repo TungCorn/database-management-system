@@ -3,6 +3,29 @@
 -- loại mặt hàng đã có trong danh sách thì báo lỗi.
 -- Thử thêm một loại mặt hàng vào trong bảng
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     create trigger them_hang
     on LoaiHang
     for insert
@@ -50,7 +73,6 @@
                         rollback transaction
                     end
         end
-
 
         update LoaiHang set TenLoaiHang = N'tungcorn' where IDLoaiHang = 7
 

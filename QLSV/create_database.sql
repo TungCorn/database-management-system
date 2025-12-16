@@ -3,14 +3,13 @@ use QLSV
 
 create table KHOA (
 	Makh varchar(50) primary key,
-	Vpkh nvarchar(150) 
+	Vpkh nvarchar(150)
 )
 
 create table LOP (
 	Malop varchar(50) primary key,
 	Makh varchar(50) ,
 	foreign key (Makh) references KHOA(Makh)
-	
 )
 
 create table SINHVIEN(
@@ -25,7 +24,7 @@ create table SINHVIEN(
 )
 
 ALTER TABLE SINHVIEN
-    ADD Gioitinh NVARCHAR(10);
+    ADD ngu NVARCHAR(10);
 
 create unique index kt_lop_truong
 on SINHVIEN(Malop)
