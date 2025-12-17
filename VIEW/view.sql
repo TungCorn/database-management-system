@@ -87,10 +87,12 @@ from ds_sv_hb_lvk
 
 --
 
-create view v1
+alter view v1
 as
-select *
-from SINHVIEN sv
+        select *
+        from SINHVIEN sv
+
+
 
 select *
 from v1

@@ -79,12 +79,12 @@ end
 
 go
 
-create proc sl_sv_thi_lai @dssv cursor varying out
+alter proc sl_sv_thi_lai @dssv cursor varying out
 as
 begin
     set @dssv = cursor
         for
-        select Mamh, count(Masv) as SoLuongSVThiLai
+        select Mamh, count(distinct Masv) as SoLuongSVThiLai
         from DIEMSV
         where Diem < 5
         group by Mamh

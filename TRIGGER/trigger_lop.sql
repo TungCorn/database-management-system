@@ -20,9 +20,11 @@ ALTER trigger TRIG1
         deallocate dsmalop;
     end
     insert into LOP (Malop, Makh)
-    values ('TH40', 'CNTT'),
-           ('TH39', 'CNTT')
+    values ('TH90', 'CNTT'),
+           ('TH91', 'CNTT')
     drop trigger if exists TRIG1
+
+
     CREATE TRIGGER trig_del
         on DIEMSV
         for delete
@@ -33,6 +35,8 @@ ALTER trigger TRIG1
         delete
         from DIEMSV
         where Masv = 'SV020'
+
+
         create trigger trig_update
             on DIEMSV
             for update
