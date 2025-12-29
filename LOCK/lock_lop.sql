@@ -27,7 +27,7 @@ as
 begin
     begin tran
     set transaction isolation level read committed
-    select * from NganHang with (lock ) where IDTaiKhoan = @tkdich
+    select * from NganHang with ( updlock ) where IDTaiKhoan = @tkdich
     update NganHang set SoDu = SoDu - @sotien
     where IDTaiKhoan = @tknguon
     waitfor delay '00:00:10'
